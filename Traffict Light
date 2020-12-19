@@ -1,0 +1,94 @@
+;DI BAWAH INI ADA DUA SOURCE CODE YAKNI UNTUK AT89C51 YANG PERTAMA DAN YANG KEDUA KARENA SAYA MEMAKAI 2 MICROCONTROLLER
+
+;UNTUK AT89C51 YANG KE-1 (KIRI)
+ORG 00H
+MOV TMOD,#01H
+AGAIN :	MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00011000B	;lampu kuning menyala
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#11100000B	;lampu hijau menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00011000B	;lampu kuning menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#11100000B	;lampu hijau menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		SJMP AGAIN		;lakukan lagi
+RET
+
+DELAY :	MOV R0,#100		;fungsi delay dengan terkaan 13/2 detik
+REPEAT: 	MOV TH0,#00H
+		MOV TL0,#00H
+		SETB TR0
+STAY  :	JNB TF0,STAY
+		CLR TR0
+		CLR TF0
+		DJNZ R0,REPEAT
+		RET
+END
+
+
+
+
+;UNTUK AT89C51 YANG KE-2 (KANAN)
+ORG 00H
+MOV TMOD,#01H
+AGAIN :	MOV P1,#00000111B	;lamp merah menyala
+		MOV P2,#11100000B	;lampu hijau menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00011000B	;lampu kuning menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#11100000B	;lampu hijau menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00000111B	;lampu merah menyala
+		ACALL DELAY		;delay 13/2 detik
+		MOV P1,#00000111B	;lampu merah menyala
+		MOV P2,#00011000B	;lampu kuning menyala
+		ACALL DELAY		;delay 13/2 detik
+		SJMP AGAIN		;lakukan lagi
+RET
+
+DELAY : 	MOV R0,#100		;fungsi delay dengan terkaan 13/2 detik
+REPEAT: 	MOV TH0,#00H
+		MOV TL0,#00H
+		SETB TR0
+STAY  :	JNB TF0,STAY
+		CLR TR0
+		CLR TF0
+		DJNZ R0,REPEAT
+		RET
+END
